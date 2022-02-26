@@ -60,7 +60,7 @@ public abstract class Permanencia {
 
 	@Override
 	public String toString() {
-		return "día=" + dia.format(FORMATO_DIA);
+		return "día=" + dia.format(FORMATO_DIA) + ", puntos=" + getPuntos();
 
 	}
 

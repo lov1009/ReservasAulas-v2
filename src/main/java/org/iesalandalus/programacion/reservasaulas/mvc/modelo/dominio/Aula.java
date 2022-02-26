@@ -43,7 +43,7 @@ public class Aula {
 			throw new NullPointerException("ERROR: No se puede copiar un aula nula.");
 		}
 		setNombre(aula.nombre);
-		setPuestos(MIN_PUESTOS);
+		setPuestos(aula.puestos);
 	}
 
 	private void setNombre(String nombre) {
