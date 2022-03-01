@@ -6,12 +6,7 @@ import java.util.regex.Pattern;
 
 public class Profesor {
 
-	/*
-	 * Haz las modificaciones necesarias en la clase Profesor para que dos
-	 * profesores sean iguales si tienen el mismo correo. Además, añade un nuevo
-	 * método llamado getProfesorFicticio que devuelve un profesor a partir de un
-	 * correo del mismo.
-	 */
+	
 
 	private static final String ER_TELEFONO = "^[69][0-9]{8}$";
 	private static final String ER_CORREO = "^[a-z]+([a-z0-9\\-\\_\\.]*[a-z0-9])*+@([a-z]*\\.[a-z]{2,})+$";
@@ -50,12 +45,16 @@ public class Profesor {
 	 * minúsculas las demás.
 	 */
 
-	//TODO MEJORAR
+	// TODO MEJORAR
 	private String formateaNombre(String nombre) {
 
 		String[] nombreDividido = nombre.split(" ");
 
 		StringBuilder nombreFormateado = new StringBuilder();
+		
+		for (String parte : nombreDividido) {
+			parte = parte.toUpperCase();
+		}
 
 		for (int i = 0; i < nombreDividido.length; i++) {
 			if (nombreDividido[i].isEmpty()) {
@@ -134,8 +133,8 @@ public class Profesor {
 		}
 
 	}
-
 	
+	//devuelve un profesor a partir de un correo del mismo.
 	public static Profesor getProfesorFicticio(String correo) {
 		if (correo == null) {
 			throw new NullPointerException("ERROR: El correo del profesor no puede ser nulo.");
@@ -145,13 +144,12 @@ public class Profesor {
 		return new Profesor(nombre, correo);
 	}
 
-	
 	@Override
 	public int hashCode() {
-		return Objects.hash(nombre, correo);
+		return Objects.hash(correo);
 	}
 
-	@Override
+	@Override // profesores son iguales si tienen el mismo correo
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -160,12 +158,13 @@ public class Profesor {
 		if (getClass() != obj.getClass())
 			return false;
 		Profesor other = (Profesor) obj;
-		return Objects.equals(nombre, other.nombre) && Objects.equals(correo, other.correo);
+		return Objects.equals(correo, other.correo);
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder profesor = new StringBuilder("nombre=" + nombre + ", correo=" + correo);
+		
 		if (telefono != null) {
 			profesor.append(", teléfono=" + telefono);
 		}

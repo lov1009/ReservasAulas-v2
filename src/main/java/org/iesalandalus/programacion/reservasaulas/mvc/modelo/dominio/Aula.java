@@ -5,26 +5,9 @@ import java.util.Objects;
 
 public class Aula {
 
-	/*
-	 * Haz las modificaciones necesarias en la clase Aula para incluir el atributo
-	 * puestos e implementar el método getPuntos. Haz un commit.
-	 * 
-	 * Las aulas deben tener información sobre el número de puestos de cada una.
-	 * 
-	 * Una reserva restará la suma del número de puntos de la permanencia 
-	 * (3 puntos por hora o 10 puntos por tramo) 
-	 * más el número de puntos del aula 
-	 * (0,5 puntos por el número de puestos del aula). 
-	 * 
-	 * Un profesor tiene disponibles cada mes 200 puntos 
-	 * por lo que si cuando va a realizar una reserva el 
-	 * número de puntos gastados ese mes más 
-	 * el número de puntos de la reserva que quiere realizar 
-	 * supera 200 no dejará realizar la reserva.
-	 */
 
 	// atributos
-	private static final float PUNTOS_POR_PUESTO = 0.5f;
+	private static final float PUNTOS_POR_PUESTO = 0.5f; //(0,5 puntos por el número de puestos del aula)
 	private static final int MIN_PUESTOS = 10;
 	private static final int MAX_PUESTOS = 100;
 	private String nombre;
@@ -61,7 +44,7 @@ public class Aula {
 		return nombre;
 	}
 
-	//TODO 
+	
 	private void setPuestos(int puestos) {
 		if (puestos < MIN_PUESTOS || puestos > MAX_PUESTOS) {
 			throw new IllegalArgumentException("ERROR: El número de puestos no es correcto.");
@@ -73,7 +56,7 @@ public class Aula {
 		return puestos;
 	}
 
-	
+	//calcula el numero de puntos según los puestos del aula
 	public float getPuntos() {
 		float resultado = puestos*PUNTOS_POR_PUESTO;
 		return resultado;
