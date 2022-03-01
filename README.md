@@ -32,7 +32,7 @@ Por tanto, tu tarea va a consistir en completar los siguientes apartados:
 6. Convierte la clase `Permanencia` en una clase abstracta y haz que el método **getPuntos** sea abstracto. Esta clase sólo tendrá como atributo el día de la permanencia. Haz un commit.
 7. Crea la clase `PermanenciaPorTramo` que herede de `Permanencia`, que implemente el método **getPuntos** y que posea el atributo **tramo**. Haz un commit.
 8. Crea la clase `PermanenciaPorHora` que herede de `Permanencia`, que implemente el método **getPuntos** y que posea el atributo **hora**. Esta clase debe contemplar los requisitos expuestos en el enunciado para las horas. Haz un commit.
-9. Haz las modificaciones necesarias en la clase Reserva para que
+9. Haz las modificaciones necesarias en la clase Reserva (creo que será Reservas?) para que
     - Un aula se pueda reservar por un profesor para una permanencia por tramo o por horas y que implemente el método **getPuntos**. Haz un commit.
     - Se tengan en cuenta las restricciones comentadas en el enunciado sobre no poder reservar aulas para el mes en curso y que no se sobrepase el límite de puntos de un profesor para el mes en el que quiere realizar la reserva. Haz un commit.
 10. Haz las modificaciones necesarias en la clase `Consola` para que se incluyan los métodos descritos a continuación:
