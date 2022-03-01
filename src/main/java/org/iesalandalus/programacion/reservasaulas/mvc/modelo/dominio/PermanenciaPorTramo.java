@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class PermanenciaPorTramo extends Permanencia {
 
-	private static final int PUNTOS = 10; //TODO
+	private static final int PUNTOS = 10; //puntos que supone una permanencia por tramo
 	private Tramo tramo;
 
 	public PermanenciaPorTramo(LocalDate dia, Tramo tramo) {
@@ -16,9 +16,7 @@ public class PermanenciaPorTramo extends Permanencia {
 
 	public PermanenciaPorTramo(PermanenciaPorTramo permanencia) {
 		super(permanencia);
-		setTramo(Tramo.MANANA);
-	
-		
+		setTramo(permanencia.getTramo()); 
 	}
 
 	public Tramo getTramo() {
