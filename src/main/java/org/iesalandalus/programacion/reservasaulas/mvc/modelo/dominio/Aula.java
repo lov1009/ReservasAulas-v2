@@ -2,12 +2,10 @@ package org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio;
 
 import java.util.Objects;
 
-
 public class Aula {
 
-
 	// atributos
-	private static final float PUNTOS_POR_PUESTO = 0.5f; //(0,5 puntos por el número de puestos del aula)
+	private static final float PUNTOS_POR_PUESTO = 0.5f; // (0,5 puntos por el número de puestos del aula)
 	private static final int MIN_PUESTOS = 10;
 	private static final int MAX_PUESTOS = 100;
 	private String nombre;
@@ -44,10 +42,10 @@ public class Aula {
 		return nombre;
 	}
 
-	
 	private void setPuestos(int puestos) {
 		if (puestos < MIN_PUESTOS || puestos > MAX_PUESTOS) {
-			throw new IllegalArgumentException("ERROR: El número de puestos no es correcto.");
+			throw new IllegalArgumentException(
+					"ERROR: El número de puestos no es correcto. \nDebe elegir un valor comprendido entre " + MIN_PUESTOS + " y " + MAX_PUESTOS + ".");
 		}
 		this.puestos = puestos;
 	}
@@ -56,14 +54,14 @@ public class Aula {
 		return puestos;
 	}
 
-	//calcula el numero de puntos según los puestos del aula
+	// calcula el numero de puntos según los puestos del aula
 	public float getPuntos() {
-		float resultado = puestos*PUNTOS_POR_PUESTO;
+		float resultado = puestos * PUNTOS_POR_PUESTO;
 		return resultado;
 	}
 
 	public static Aula getAulaFicticia(String nombreAula) {
-		
+
 		return new Aula(nombreAula, MIN_PUESTOS);
 	}
 

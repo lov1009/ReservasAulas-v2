@@ -115,7 +115,7 @@ public class Reserva {
 		return Objects.hash(aula, permanencia);
 	}
 
-//TODO
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -129,7 +129,7 @@ public class Reserva {
 		return Objects.equals(aula, other.aula) && Objects.equals(permanencia, other.permanencia);
 	}
 
-//TODO
+
 	@Override
 	public String toString() {
 		return profesor + ", " + aula + ", " + permanencia + ", puntos="

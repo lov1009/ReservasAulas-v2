@@ -213,7 +213,7 @@ public class Reservas implements IReservas {
 	}
 
 	/*
-	 * indexOf nos da el indice (como la posicion donde se encuentra) la reserva si
+	 * indexOf nos da el indice (como la posicion donde se encuentra) de la reserva si
 	 * la encuentra en la coleccion de reservas. Si el indice es >= 0 es que la
 	 * encontró, y entonces devolvemos una nueva reserva igual a la reserva que
 	 * había en ese indice: reservas.get(indice).
