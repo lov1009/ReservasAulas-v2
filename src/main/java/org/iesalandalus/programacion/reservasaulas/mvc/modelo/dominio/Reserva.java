@@ -1,25 +1,9 @@
 package org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class Reserva {
 
-	/*
-	 * Modifica la clase Reserva para añadir un método getReservaFicticia que a
-	 * través de un aula y de una permanencia recibidas como parámetros, obtenga un
-	 * profesor ficticio y devuelve una reserva.
-	 * 
-	 * Haz las modificaciones necesarias en la clase Reserva para que Un aula se
-	 * pueda reservar por un profesor para una permanencia por tramo o por horas y
-	 * que implemente el método getPuntos. Haz un commit. Se tengan en cuenta las
-	 * restricciones comentadas en el enunciado sobre no poder reservar aulas para
-	 * el mes en curso y que no se sobrepase el límite de puntos de un profesor para
-	 * el mes en el que quiere realizar la reserva. Haz un commit.
-	 */
-
-	// TODO parece que tienen que ser private
-	// permanencia tiene que ser protected pq su clase es abstracta?????
 	private Profesor profesor;
 	private Aula aula;
 	private Permanencia permanencia;
@@ -85,16 +69,20 @@ public class Reserva {
 			throw new NullPointerException("ERROR: La reserva se debe hacer para una permanencia concreta.");
 		}
 
+		// casteo para el tipo de permanencia, para que la reserva pueda ser para una
+		// permanencia de tramo o de hora
 		if (permanencia.getPuntos() == 10) {
-			this.permanencia = new PermanenciaPorTramo((PermanenciaPorTramo) permanencia);
+			this.permanencia = new PermanenciaPorTramo(permanencia.getDia(),
+					((PermanenciaPorTramo) permanencia).getTramo());
 		} else {
-			this.permanencia = new PermanenciaPorHora((PermanenciaPorHora) permanencia);
+			this.permanencia = new PermanenciaPorHora(permanencia.getDia(),
+					((PermanenciaPorHora) permanencia).getHora());
 		}
 
 	}
 
 	/*
-	 * TODO método getReservaFicticia que a través de un aula y de una permanencia
+	 * método getReservaFicticia que a través de un aula y de una permanencia
 	 * recibidas como parámetros, obtenga un profesor ficticio y devuelve una
 	 * reserva.
 	 */
@@ -113,6 +101,7 @@ public class Reserva {
 		return new Reserva(profesorFicticio, aula, permanencia);
 
 	}
+
 	// Una reserva restará la suma del número de puntos de la permanencia más el
 	// número de puntos del aula.
 
@@ -126,6 +115,7 @@ public class Reserva {
 		return Objects.hash(aula, permanencia);
 	}
 
+//TODO
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -135,9 +125,11 @@ public class Reserva {
 		if (getClass() != obj.getClass())
 			return false;
 		Reserva other = (Reserva) obj;
+
 		return Objects.equals(aula, other.aula) && Objects.equals(permanencia, other.permanencia);
 	}
 
+//TODO
 	@Override
 	public String toString() {
 		return profesor + ", " + aula + ", " + permanencia + ", puntos="
