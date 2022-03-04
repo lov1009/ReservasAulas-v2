@@ -41,7 +41,7 @@ public class Aulas implements IAulas {
 		// nombre y las ordeno.
 
 		Comparator<Aula> comparator = Comparator.comparing(Aula::getNombre);
-
+// palabras.sort(Comparator.comparing(String::length).thenComparing(String::compareTo)); pa saber lo del thenComparing TODO
 		List<Aula> copiaAulas = copiaProfundaAulas(aulas);
 
 		Collections.sort(copiaAulas, comparator);

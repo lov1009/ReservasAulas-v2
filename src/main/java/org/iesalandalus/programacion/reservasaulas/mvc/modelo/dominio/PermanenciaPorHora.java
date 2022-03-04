@@ -19,8 +19,8 @@ public class PermanenciaPorHora extends Permanencia {
 	}
 
 	public PermanenciaPorHora(PermanenciaPorHora permanencia) {
-		super(permanencia);
-		setHora(permanencia.getHora());
+		super(permanencia); //TODO te dice el dia de la permanencia según el super, clase padre Permanencia
+		setHora(permanencia.getHora()); //te dice la hora de la permanencia
 	
 	}
 

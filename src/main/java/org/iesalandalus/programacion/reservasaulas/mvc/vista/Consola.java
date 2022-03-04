@@ -146,7 +146,7 @@ public class Consola {
 			for (Tramo tramo : Tramo.values()) {
 				System.out.println(String.format("%d.- %s", tramo.ordinal(), tramo));
 			}
-
+//TODO ARRIBA
 			int tramo = Entrada.entero();
 
 			try {

@@ -45,16 +45,13 @@ public class Profesor {
 	 * minúsculas las demás.
 	 */
 
-	// TODO MEJORAR
 	private String formateaNombre(String nombre) {
 
 		String[] nombreDividido = nombre.split(" ");
 
 		StringBuilder nombreFormateado = new StringBuilder();
 		
-		for (String parte : nombreDividido) {
-			parte = parte.toUpperCase();
-		}
+
 
 		for (int i = 0; i < nombreDividido.length; i++) {
 			if (nombreDividido[i].isEmpty()) {

@@ -213,8 +213,8 @@ public class Reservas implements IReservas {
 	}
 
 	/*
-	 * indexOf nos da el indice (como la posicion donde se encuentra) de la reserva si
-	 * la encuentra en la coleccion de reservas. Si el indice es >= 0 es que la
+	 * indexOf nos da el indice (como la posicion donde se encuentra) de la reserva
+	 * si la encuentra en la coleccion de reservas. Si el indice es >= 0 es que la
 	 * encontró, y entonces devolvemos una nueva reserva igual a la reserva que
 	 * había en ese indice: reservas.get(indice).
 	 */
@@ -222,11 +222,23 @@ public class Reservas implements IReservas {
 		if (reserva == null) {
 			throw new NullPointerException("ERROR: No se puede buscar una reserva nula.");
 		}
+
 		int indice = reservas.indexOf(reserva);
 		if (indice >= 0) {
 			return new Reserva(reservas.get(indice));
 		}
 		return null;
+
+		/*
+		 * quizas se puede hacer asi tb 
+		 * int i;
+		 * 
+		 * if (reservas.contains(reserva)) { 
+		 * i = reservas.indexOf(reserva); 
+		 * return new Reserva(reservas.get(i)); }
+		 * 
+		 * return null;
+		 */
 
 	}
 
