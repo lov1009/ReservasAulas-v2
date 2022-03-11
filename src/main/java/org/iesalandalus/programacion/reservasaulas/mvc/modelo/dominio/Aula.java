@@ -1,8 +1,9 @@
 package org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Aula {
+public class Aula implements Serializable{
 
 	// atributos
 	private static final float PUNTOS_POR_PUESTO = 0.5f; // (0,5 puntos por el número de puestos del aula)

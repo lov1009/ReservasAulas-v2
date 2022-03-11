@@ -13,16 +13,17 @@ import org.iesalandalus.programacion.reservasaulas.mvc.vista.IVista;
 
 public class Controlador implements IControlador {
 
-	IModelo modelo;
-	IVista vista;
+	private IModelo modelo;
+	private IVista vista;
 
+	
 	public Controlador(IModelo modelo, IVista vista) {
 		if (modelo == null) {
-			throw new IllegalArgumentException("ERROR: El modelo no puede ser nulo.");
+			throw new NullPointerException("ERROR: El modelo no puede ser nulo.");
 		}
 
 		if (vista == null) {
-			throw new IllegalArgumentException("ERROR: La vista no puede ser nula.");
+			throw new NullPointerException("ERROR: La vista no puede ser nula.");
 		}
 
 		this.modelo = modelo;
@@ -122,7 +123,7 @@ public class Controlador implements IControlador {
 	}
 
 	@Override
-	public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia){
+	public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia) {
 
 		return modelo.consultarDisponibilidad(aula, permanencia);
 	}

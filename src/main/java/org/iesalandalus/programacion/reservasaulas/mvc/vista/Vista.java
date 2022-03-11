@@ -12,7 +12,7 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
 
 public class Vista implements IVista {
 
-	IControlador controlador;
+	private IControlador controlador;
 
 	private static final String ERROR = "";
 	private static final String NOMBRE_VALIDO = "MariPepi";
