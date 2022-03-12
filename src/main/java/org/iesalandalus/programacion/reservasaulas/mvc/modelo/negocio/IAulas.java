@@ -6,13 +6,21 @@ import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 
-
 public interface IAulas {
-	//Declaramos los métodos que forman parte de la interfaz (El comportamiento)
-	public List<Aula> getAulas();
-	public int getNumAulas();
-	public void insertar(Aula aula) throws OperationNotSupportedException;
-	public Aula buscar(Aula aula);
-	public void borrar(Aula aula) throws OperationNotSupportedException;
-	public List<String> representar();
+	// Declaramos los métodos que forman parte de la interfaz (El comportamiento)
+	void comenzar();
+
+	void terminar();
+
+	List<Aula> getAulas();
+
+	int getNumAulas();
+
+	void insertar(Aula aula) throws OperationNotSupportedException;
+
+	Aula buscar(Aula aula);
+
+	void borrar(Aula aula) throws OperationNotSupportedException;
+
+	List<String> representar();
 }

@@ -10,6 +10,9 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
 
 public interface IModelo {
+	
+	void comenzar();
+	void terminar();
 
 	List<Aula> getAulas();
 

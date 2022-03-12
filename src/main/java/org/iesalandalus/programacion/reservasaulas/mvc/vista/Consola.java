@@ -14,6 +14,7 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Permanenci
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Tramo;
+import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.memoria.Reservas;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
 public class Consola {
@@ -133,9 +134,11 @@ public class Consola {
 	public static Profesor leerProfesorFicticio() {
 		System.out.println("Introduzca el correo del profesor");
 		String correoProfesor = Entrada.cadena();
-		return new Profesor("nombreFicticio", correoProfesor);
+		return new Profesor("Profesor Ficticio", correoProfesor);
 
 	}
+
+	
 
 	// Lee los datos de un tramo y trata las excepciones
 	public static Tramo leerTramo() {
@@ -274,20 +277,21 @@ public class Consola {
 	// devuelve una reserva.
 
 	public static Reserva leerReserva() {
-		Aula aulaFicticia = leerAulaFicticia();
-		Profesor profesorFicticio = leerProfesorFicticio();
-		Permanencia p = leerPermanencia();
-		return new Reserva(profesorFicticio, aulaFicticia, p);
+//	 Reserva reserva = leerReservaFicticia();
+	// Reserva reservaEncontrada = 
+		// aulaFicticia = leerAulaFicticia();
+		// Profesor profesorFicticio = leerProfesorFicticio(); //TODO
+		// Permanencia p = leerPermanencia();
+		return new Reserva(leerReservaFicticia());
 	}
 
 //TODO
 	// A partir de un aula ficticia y de una permanencia, devuelve reserva ficticia.
 	public static Reserva leerReservaFicticia() {
-
+		Profesor profesor = leerProfesorFicticio();
 		Aula aulaFicticia = leerAulaFicticia();
-		Reserva reser = leerReserva();
-		Permanencia p = leerPermanencia();
-		return new Reserva(reser);
+		Permanencia permanencia = leerPermanencia();
+		return new Reserva(profesor, aulaFicticia, permanencia);
 	}
 
 }

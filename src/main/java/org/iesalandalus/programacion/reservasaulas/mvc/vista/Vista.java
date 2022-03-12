@@ -77,7 +77,7 @@ public class Vista implements IVista {
 
 	public void borrarAula() {
 
-		Aula aula = Consola.leerAula();
+		Aula aula = Consola.leerAulaFicticia(); //AQUI HE PUESTO ESTO EN VEZ D LEEER AULA TODO
 
 		try {
 			controlador.borrarAula(aula);
@@ -149,7 +149,7 @@ public class Vista implements IVista {
 			if (profesorEncontrado != null) {
 				System.out.println(profesorEncontrado.toString());
 			} else
-				System.out.println("ERROR: No existe ningún profesor con el correo: " + profesor.getCorreo());
+				System.out.println("ERROR: No existe ningún profesor con el correo " + profesor.getCorreo());
 
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -204,14 +204,7 @@ public class Vista implements IVista {
 	}
 
 	public void anularReserva() {
-
-		Profesor profesor = Consola.leerProfesorFicticio();
-		Profesor profesorEncontrado = controlador.buscarProfesor(profesor);
-
-		if (profesorEncontrado == null) {
-			System.out.println("ERROR: No existe el profesor: " + profesor);
-			return;
-		}
+		 
 		Reserva reserva = Consola.leerReservaFicticia();
 
 		try {
@@ -274,7 +267,7 @@ public class Vista implements IVista {
 			Profesor profesor = Consola.leerProfesorFicticio();
 			Profesor profesorEncontrado = controlador.buscarProfesor(profesor);
 			if (profesorEncontrado == null) {
-				System.out.println("ERROR: No existe el profesor: " + profesor);
+				System.out.println("ERROR: No existe el profesor con correo " + profesor.getCorreo());
 				return;
 			}
 			List<Reserva> reservasProfesor = controlador.getReservasProfesor(profesorEncontrado);

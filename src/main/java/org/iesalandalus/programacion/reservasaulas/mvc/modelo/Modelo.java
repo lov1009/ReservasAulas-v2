@@ -15,14 +15,30 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.IReservas;
 public class Modelo implements IModelo {
 	
 
-	IProfesores profesores;
-	IAulas aulas;
-	IReservas reservas;
+	private IProfesores profesores;
+	private IAulas aulas;
+	private IReservas reservas;
 
 	public Modelo(IFuenteDatos fuenteDatos) {
 		aulas = fuenteDatos.crearAulas();
 		profesores = fuenteDatos.crearProfesores();
 		reservas = fuenteDatos.crearReservas();
+	}
+	
+	@Override
+	public void comenzar() {
+		aulas.comenzar();
+		profesores.comenzar();
+		reservas.comenzar();
+		
+	}
+
+	@Override
+	public void terminar() {
+		aulas.terminar();
+		profesores.terminar();
+		reservas.terminar();
+		
 	}
 
 	// AULA
@@ -142,5 +158,7 @@ public class Modelo implements IModelo {
 
 		return reservas.consultarDisponibilidad(aula, permanencia);
 	}
+
+	
 
 }

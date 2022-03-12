@@ -1,5 +1,13 @@
-package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.memoria;
+package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.ficheros;
 
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,6 +20,8 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.IProfesores;
 
 public class Profesores implements IProfesores {
+
+	private static final String NOMBRE_FICHERO_PROFESORES = "datos/profesores.dat";
 
 	/*
 	 * Modifica la clase Profesores para que utilice un ArrayList en vez de un
@@ -34,6 +44,62 @@ public class Profesores implements IProfesores {
 		}
 		setProfesores(profesores);
 
+	}
+
+	@Override
+	public void comenzar() {
+		leer();
+
+	}
+
+	private void leer() {
+
+		File ficheroProfesores = new File(NOMBRE_FICHERO_PROFESORES); // crear File que accede al fichero (constante
+																		// creada antes)
+		// crear flujo de entrada y el ObjectInputStream (para leer objetos), voy
+		// leyendo los objetos, casteándolos a Profesor y voy insertando cada profesor
+		// que lea.
+		try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(ficheroProfesores))) {
+			Profesor profesor = null;
+			do {
+				profesor = (Profesor) entrada.readObject();
+				insertar(profesor);
+
+			} while (profesor != null);
+		} catch (ClassNotFoundException e) {
+			System.out.println("ERROR: No puedo encontrar la clase que tengo que leer.");
+		} catch (FileNotFoundException e) {
+			System.out.println("ERROR: No puedo abrir el fichero de profesores.");
+		} catch (EOFException e) {
+			System.out.println("Fichero profesores leído correctamente.");
+		} catch (IOException e) {
+			System.out.println("ERROR inesperado de Entrada/Salida.");
+		} catch (OperationNotSupportedException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+	@Override
+	public void terminar() {
+		escribir();
+
+	}
+
+	private void escribir() {
+		File ficheroProfesores = new File(NOMBRE_FICHERO_PROFESORES); // crear fichero
+		// crear flujo de salida y el ObjectOutputStream (para escribir objetos) y
+		// escribir cada profesor que existe en profesores
+		try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ficheroProfesores))) {
+			for (Profesor profesor : profesores)
+				salida.writeObject(profesor);
+			System.out.println("Fichero profesores escrito correctamente.");
+
+		} catch (FileNotFoundException e) {
+			System.out.println("ERROR: No puedo abrir el fichero de profesores.");
+		} catch (IOException e) {
+			System.out.println("ERROR inesperado de Entrada/Salida.");
+		}
 	}
 
 	private void setProfesores(Profesores profesores) {
@@ -126,16 +192,6 @@ public class Profesores implements IProfesores {
 		}
 
 		return representacion;
-	}
-
-	@Override
-	public void comenzar() {
-
-	}
-
-	@Override
-	public void terminar() {
-
 	}
 
 }

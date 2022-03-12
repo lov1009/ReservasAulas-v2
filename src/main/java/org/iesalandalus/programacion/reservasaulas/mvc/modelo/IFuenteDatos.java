@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package org.iesalandalus.programacion.reservasaulas.mvc.modelo;
 
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.IAulas;
@@ -11,10 +9,9 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.IReservas;
  * @author laura
  *
  */
-public interface IFuenteDatos {//extends IAulas, IProfesores, IReservas{
+public interface IFuenteDatos {
 
-	public IAulas crearAulas();
-	public IProfesores crearProfesores();
-	public IReservas crearReservas();
+	IAulas crearAulas();
+	IProfesores crearProfesores();
+	IReservas crearReservas();
 }
-//en las interfaces no hace falta poner public??

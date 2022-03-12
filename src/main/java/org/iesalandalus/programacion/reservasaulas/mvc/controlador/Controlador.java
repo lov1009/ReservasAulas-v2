@@ -16,7 +16,6 @@ public class Controlador implements IControlador {
 	private IModelo modelo;
 	private IVista vista;
 
-	
 	public Controlador(IModelo modelo, IVista vista) {
 		if (modelo == null) {
 			throw new NullPointerException("ERROR: El modelo no puede ser nulo.");
@@ -33,12 +32,17 @@ public class Controlador implements IControlador {
 
 	@Override
 	public void comenzar() {
+		modelo.comenzar();
 		vista.comenzar();
 	}
 
 	@Override
 	public void terminar() {
+		modelo.terminar();
 		return;
+		// Se supone q aquí mi profe ponía el mensajede adios"" que yo lo tengo en vista
+		//TENGO ESTO EN VISTA: controlador.terminar(); System.out.println("ADIÓS");
+		
 	}
 
 	@Override
